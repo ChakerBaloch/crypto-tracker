@@ -1,0 +1,90 @@
+/* ===================
+   Home Page Styles
+   ===================*/
+
+/* Home Container */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f9f9f9;
+    position: relative;
+  }
+  
+  /* Content Wrapper */
+  .content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 40px;
+    margin-left: 16rem; /* Adjust for sidebar width */
+    width: calc(100% - 16rem);
+    transition: margin-left 0.3s ease;
+  }
+  
+  /* Adjust content when the sidebar is closed */
+  .sidebar.closed + .content {
+    margin-left: 0;
+    width: 100%;
+  }
+  
+  /* Crypto Cards Grid */
+  .crypto-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+    justify-content: center;
+    padding-top: 15%;
+  }
+  
+  /* Search Bar */
+  .search-bar {
+    width: 100%;
+    max-width: 400px;
+    padding: 12px 18px;
+    border-radius: 10px;
+    border: 2px solid #7B61FF;
+    background: white;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+  }
+  
+  .search-bar:focus {
+    border-color: #A78BFA;
+  }
+  
+  /* Mobile Header (Search Bar Only) */
+  .mobile-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 10%;
+    background-color: #f9f9f9;
+  }
+  
+  /* Mobile Responsive Styles */
+  @media (max-width: 1024px) {
+    .content {
+      margin-left: 0;
+      padding: 20px;
+      width: 100%;
+      margin-top: 70px; /* Adjust for mobile header */
+    }
+    
+    .crypto-cards {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+      width: 100%;
+      padding-top: 0;
+      justify-items: center;
+    }
+  }
+  

@@ -1,0 +1,33 @@
+---
+id: state-management
+title: State Management
+sidebar_label: State Management
+---
+
+# State Management
+
+## Why React Query?
+
+In **Crypto Price Tracker**, we leverage **React Query** for state management to optimize API interactions. React Query provides:
+
+✅ **Efficient Data Fetching**: Reduces unnecessary API calls by caching data.
+
+✅ **Automatic Caching & Background Sync**: Ensures real-time data accuracy without redundant network requests.
+
+✅ **Optimized Performance**: Minimizes re-renders and improves user experience.
+
+## Implementation Example
+
+The following implementation fetches cryptocurrency price data while managing caching and revalidation efficiently:
+
+```tsx
+import { useQuery } from "@tanstack/react-query";
+import { fetchCryptoPrices } from "@/services/api";
+
+export function useCryptoPrices() {
+  return useQuery(["cryptoPrices"], fetchCryptoPrices, {
+    staleTime: 60000, // Cache data for 60 seconds to reduce API load
+    refetchOnWindowFocus: false, // Prevents unnecessary refetching on tab switch
+    retry: 2, // Retries failed requests up to 2 times
+  });
+}

@@ -1,0 +1,38 @@
+---
+id: api-integration
+title: API Integration
+sidebar_label: API Details
+---
+
+# API Integration Details
+
+ **Crypto Price Tracker** fetches real-time cryptocurrency prices using **CoinGecko's API**. Below are the integration details and implementation.
+
+## Fetching Cryptocurrency Prices
+
+We use `axios` to interact with the API, ensuring efficient error handling and structured data processing.
+
+```ts
+import axios from "axios";
+
+const API_URL = "https://api.coingecko.com/api/v3/coins/markets";
+
+export async function fetchCryptoPrices(): Promise<Record<string, number>> {
+  try {
+    const { data } = await axios.get(API_URL, {
+      params: {
+        vs_currency: "usd",
+        ids: "bitcoin,ethereum,ripple",
+      },
+    });
+
+    return data.reduce((prices, coin) => {
+      prices[coin.id] = coin.current_price;
+      return prices;
+    }, {} as Record<string, number>);
+  } catch (error) {
+    console.error("Error fetching prices:", error);
+    throw new Error("Failed to fetch cryptocurrency prices");
+  }
+}
+```

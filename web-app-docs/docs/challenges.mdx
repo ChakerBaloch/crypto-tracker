@@ -1,0 +1,27 @@
+---
+id: challenges
+title: Challenges & Solutions
+sidebar_label: Challenges Faced
+---
+
+# Challenges & Solutions
+
+## Challenge: API Rate Limits
+- The API imposed request limits, **blocking multiple requests** in a short time, leading to failed fetch calls and performance degradation.
+- **Technical Issue**: The application relied on multiple API calls for real-time data, causing throttling issues due to exceeding API request quotas.
+- **Solution**: Implemented **React Query's caching and background refetching** to reduce redundant calls and optimize API usage.
+  - **Stale Time Strategy**: Configured `staleTime` to prevent unnecessary re-fetching of data.
+  - **Enhanced Exception Classification and Error Handling**: I introduced a comprehensive try-catch structure to properly categorize and manage exceptions thrown by the API. This system allows for more precise error identification and tailored responses to different types of exceptions, improving our ability to handle and report errors effectively.
+
+## Challenge: Mobile UI Alignment Issues
+- The layout had misaligned elements, where **cards were overlapping or not properly aligned** with the sidebar.
+- **Technical Issue**: The initial layout used inconsistent `width` and `margin` values, causing unexpected rendering issues in responsive views.
+- **Solution**: Refactored the layout using **CSS Flexbox and CSS Grid** for better alignment and scalability.
+  - **Grid-Based Layout**: Used `grid-template-columns` to ensure a flexible structure that adapts to different screen sizes.
+  - **Flexbox Justification**: Applied `justify-content: space-between;` to evenly distribute elements without breaking responsiveness.
+  - **Media Queries**: Adjusted breakpoints for **seamless mobile responsiveness** without affecting desktop views.
+
+## Challenge: Sidebar Not Responsive
+- Initially, the **hamburger menu** was not rendering on mobile devices due to incorrect CSS rules.
+- **Technical Issue**: The `display` property was overridden by higher specificity styles in the CSS cascade, making the menu invisible.
+- **Solution**: Applied `display: block !important;` to enforce visibility, ensuring that the menu is accessible regardless of conflicting styles.

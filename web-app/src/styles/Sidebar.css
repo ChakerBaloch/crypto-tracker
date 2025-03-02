@@ -1,0 +1,142 @@
+/* ===================
+   Side bar Styles
+   ===================*/
+/* Sidebar Container */
+.sidebar {
+  width: 16rem;
+  height: 100vh;
+  background-color: #F6F6F9;
+  color: #333;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease-in-out;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+}
+
+/* Sidebar Open/Closed States */
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar.closed {
+  transform: translateX(-100%);
+}
+
+/* Sidebar Header */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Close Button (visible on mobile) */
+.close-btn {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+}
+
+.close-btn:hover {
+  color: #7D5FFF;
+}
+
+/* Navigation List */
+.nav-list {
+  margin-top: 1.5rem;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  color: #555;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+/* Accessibility: Focus state for keyboard navigation */
+.nav-item:focus {
+  outline: 2px solid #7B61FF;
+  outline-offset: 2px;
+}
+
+.nav-item:hover,
+.nav-item.active {
+  background-color: #E4E4E7;
+  color: #000;
+  transform: scale(1.05);
+}
+
+/* Refresh Button */
+.refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+  width: 100%;
+  background-color: #7D5FFF;
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 10px rgba(125, 95, 255, 0.2);
+  margin-top: auto;
+}
+
+.refresh-btn:hover {
+  background-color: #5A4EC7;
+  transform: scale(1.05);
+}
+
+/* Hamburger Button for Sidebar */
+.hamburger {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #333;
+  z-index: 1010;
+}
+
+.hamburger:hover {
+  color: #7D5FFF;
+}
+
+/* Mobile Responsive Styles for Sidebar */
+@media (max-width: 1024px) {
+  .hamburger {
+    display: block;
+  }
+  .sidebar {
+    width: 80%;
+    max-width: 250px;
+    height: 100vh;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 50;
+  }
+  .sidebar.open {
+    transform: translateX(0);
+  }
+  .close-btn {
+    display: block;
+  }
+}
